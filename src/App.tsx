@@ -3,13 +3,19 @@ import AuthScreen from './screens/AuthScreen'
 import TeacherDashboard from './screens/TeacherDashboard'
 import StudentDashboard from './screens/StudentDashboard'
 
-type Session = { role: 'teacher' | 'student' } | null
+type Session = {
+  role: 'teacher' | 'student'
+} | null
 
 export default function App() {
   const [session, setSession] = useState<Session>(null)
 
   if (!session) {
-    return <AuthScreen onLogin={(role) => setSession({ role })} />
+    return (
+      <AuthScreen
+        onLogin={(role) => setSession({ role })}
+      />
+    )
   }
 
   if (session.role === 'teacher') {
